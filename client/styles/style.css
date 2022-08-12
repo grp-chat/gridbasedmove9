@@ -12,7 +12,7 @@ body {
     border: 1px solid white;
     color: wheat;
     position: absolute;
-    left: 1065px;
+    left: 1005px;
     font-size: 12px;
 }
 
@@ -23,7 +23,7 @@ body {
     color: wheat;
     position: absolute;
     top: 280px;
-    left: 1065px;
+    left: 1005px;
 }
 
 .modal {
@@ -37,8 +37,8 @@ body {
     z-index: 10;
     background-color: black;
     color: white;
-    width: 500px;
-    max-width: 80%;
+    width: 600px;
+    max-width: 85%;
 }
 
 .modal.active {

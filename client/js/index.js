@@ -208,6 +208,19 @@ class localFixedCommand {
         //this.localFunc();
     }
 }
+class localFreeCommand {
+    constructor (prefix, localFunc) {
+        this.prefix = prefix; 
+        //this.localFunc = localFunc;
+    }
+
+    executeCommand(message) {
+        if (message.slice(0, this.prefix.length) != this.prefix) {return}
+        legendModal();
+        openModal();
+        //this.localFunc();
+    }
+}
 
 class forceClientRefreshCommand {
     constructor (prefix, sockEmitFlag) {
@@ -244,7 +257,7 @@ class idCommand {
         var extractNickname = message.slice(4).replace(/[^A-Z]+/g, "");
         if (nickname != "TCR") {return}
         if (message.slice(0, this.prefix.length) != this.prefix) {return}
-        if (studentsArr.includes(extractNickname) === false) {return}
+        if (extractNickname != "TCR") {return}
         
         sock.emit(this.sockEmitFlag, extractNickname);
         
@@ -312,12 +325,15 @@ const allCommands = [
     new numAndIdCommand("TCR: +", 'addSteps'),
     new numAndIdCommand("TCR: good ", 'sendPW'),
     new numAndIdCommand("TCR: nope ", 'failed'),
+    new numAndIdCommand("TCR: use ", 'useItem'),
     new fixedCommand("TCR: mind control off", 'mindControlOff'),
     new numCommand("TCR: open lock ", 'openLock'),
+    new localFreeCommand(nickname + ": legend", openModal),
     new localFixedCommand("TCR: list", openModal),
     new idCommand("TCR: go a2 ", 'teleportPlayerArea2'),
     new idCommand("TCR: go a1 ", 'teleportPlayerMainArea'),
-    new idCommand("TCR: go a3 ", 'teleportPlayerArea3')
+    new idCommand("TCR: go a3 ", 'teleportPlayerArea3'),
+    new idCommand("TCR: go a4 ", 'teleportPlayerArea4')
     //new fixedCommand("TCR: teleport me out", 'teleportMeOut'),
     //new fixedCommand("TCR: teleport me in", 'teleportMeIn'),
     //new fixedCommand("TCR: number of players", '???'),
@@ -331,6 +347,22 @@ function openModal() {
     if (modal === null) return
     modal.classList.add('active');
     overlay.classList.add('active');
+}
+function legendModal() {
+    modalHeader.innerHTML = "Items Legend";
+    modalBody.innerHTML = "🍍 {Pineapple} = You may perform 363 x 4 instead of a Cycle. Gain extra 7 steps. <br>";
+    modalBody.innerHTML += "🍇 {Grapes} = You may perform 333 x 4 instead of a Cycle. <br>";
+    modalBody.innerHTML += "🍎 {Apple} = You may perform 9-Cycle instead of a Cycle. <br>";
+    modalBody.innerHTML += "🍓 {Strawberry} = You may perform Half-Cycle instead of a Cycle. <br>";
+    modalBody.innerHTML += "🍒 {Cherries} = You may perform a Rapid Fire instead of a Cycle. <br><br>";
+    modalBody.innerHTML += "📚 {Books} = You can choose any routine. <br>";
+    modalBody.innerHTML += "🧬 {DNA} = Perform 2 times, you get the best of your 2 times. <br>";
+    modalBody.innerHTML += "🎹 {Piano} = Choose a team mate to help you this round. <br><br>";
+    modalBody.innerHTML += "🍖 {Meat} = Gain 8 steps. <br>";
+    modalBody.innerHTML += "🍇🍇🍇 {Any 3 same fruits} = Gain 15 steps. <br>";
+    modalBody.innerHTML += "🍇🍍🍎 {Any 3 different fruits} = Gain 10 steps. <br>";
+    modalBody.innerHTML += "🍇🍍🍎🍓🍒 {All 5 different fruits} = Gain 30 steps. <br>";
+    
 }
 function loadListToModal() {
     modalHeader.innerHTML = "Trigger list";
@@ -373,7 +405,8 @@ function appendMessage(message) {
 
 }
 
-studentsArr = ["TCR", "LXR", "LK", "JHA", "JV", "JL", "SZF", "H", "TJY", "KX"];
+//studentsArr = ["TCR", "LXR", "LK", "JHA", "JV", "JL", "SZF", "H", "TJY", "KX"];
+studentsArr = ["TCR", "JX", "JZ", "TWN", "LJY", "LSH", "ELI", "CUR", "RYD", "CT"];
 //studentsArr = ["TCR", "LOK", "KSY", "KN", "JT", "CJH", "LSH", "KX", "TJY", "LEN"];
 elementsArr = [];
 
@@ -417,7 +450,8 @@ class GridSystemClient {
         //this.topContext = this.#getContext(0, 0, "#111", true);
         this.cellSize = 27;
         this.padding = 2;
-        this.students = ["TCR", "LXR", "LK", "JHA", "JV", "JL", "SZF", "H", "TJY", "KX"];
+        //this.students = ["TCR", "LXR", "LK", "JHA", "JV", "JL", "SZF", "H", "TJY", "KX"];
+        this.students = ["TCR", "JX", "JZ", "TWN", "LJY", "LSH", "ELI", "CUR", "RYD", "CT"];
         
         this.cdm = {
             area1: [{x:2,y:10},{x:17,y:10},{x:20,y:2},{x:20,y:18},{x:23,y:3},{x:23,y:17},{x:30,y:4},{x:30,y:16},{x:34,y:10}],
@@ -428,17 +462,17 @@ class GridSystemClient {
 
         this.p1 = { color: "grey", lable: 2, id: this.students[0] };
 
-        this.p2 = { color: "pink", lable: 3, id: this.students[1] };
-        this.p3 = { color: "white", lable: 4, id: this.students[2] };
-        this.p4 = { color: "yellow", lable: 5, id: this.students[3] };
+        this.p2 = { color: "darkorchid", lable: 3, id: this.students[1] };
+        this.p3 = { color: "springgreen", lable: 4, id: this.students[2] };
+        this.p4 = { color: "teal", lable: 5, id: this.students[3] };
 
-        this.p5 = { color: "springgreen", lable: 6, id: this.students[4] };
+        this.p5 = { color: "dodgerblue", lable: 6, id: this.students[4] };
 
-        this.p6 = { color: "royalblue", lable: 7, id: this.students[5] };
-        this.p7 = { color: "orange", lable: 8, id: this.students[6] };
-        this.p8 = { color: "teal", lable: 9, id: this.students[7] };
+        this.p6 = { color: "yellow", lable: 7, id: this.students[5] };
+        this.p7 = { color: "pink", lable: 8, id: this.students[6] };
+        this.p8 = { color: "deeppink", lable: 9, id: this.students[7] };
 
-        this.p9 = { color: "white", lable: 10, id: this.students[8] };
+        this.p9 = { color: "orange", lable: 10, id: this.students[8] };
         this.p10 = { color: "fuchsia", lable: 11, id: this.students[9] };
 
         this.playersArr = [this.p1, this.p2, this.p3, this.p4, this.p5, this.p6, this.p7, this.p8, this.p9, this.p10];
@@ -447,10 +481,28 @@ class GridSystemClient {
         this.items = {
             1: {color: "#4488FF", playerId: null},
             20: {color: "#111", playerId: "💰"},
+            21: {color: "#111", playerId: "🍍"},
+            22: {color: "#111", playerId: "🍇"},
+            23: {color: "#111", playerId: "🍎"},
+            24: {color: "#111", playerId: "🍓"},
+            25: {color: "#111", playerId: "🍒"},
+            26: {color: "#111", playerId: "📚"},
+            27: {color: "#111", playerId: "🧬"},
+            28: {color: "#111", playerId: "🎹"},
+            29: {color: "#111", playerId: "🍖"},
             30: {color: "#111", playerId: "🔒"}
         }
         this.details = {
             [this.items[20].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[21].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[22].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[23].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[24].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[25].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[26].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[27].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[28].playerId]: {font:"17px Times New Roman",rowValue:21},
+            [this.items[29].playerId]: {font:"17px Times New Roman",rowValue:21},
             [this.items[30].playerId]: {font:"23px Times New Roman",rowValue:21,text:"1",txtRow:22,txtCol:12}
         }
         this.locks = {
@@ -462,6 +514,9 @@ class GridSystemClient {
             "area4,7,3":{password:13,success:"",id:"2"},
             "area4,11,5":{password:13,success:"",id:"3"}
         }
+        this.finishFlags = [
+            {x:31,y:7},{x:32,y:7},{x:31,y:13},{x:32,y:13}
+        ];
     }
 
     #setColorAndId(cellVal) {
@@ -497,8 +552,8 @@ class GridSystemClient {
         if (this.details[plyrDet.playerId] === undefined) {return}
 
         this.outlineContext.font = this.details[plyrDet.playerId].font;
-            this.outlineContext.fillText(plyrDet.playerId, col * (this.cellSize + this.padding) + 3,
-                row * (this.cellSize + this.padding) + this.details[plyrDet.playerId].rowValue);
+        this.outlineContext.fillText(plyrDet.playerId, col * (this.cellSize + this.padding) + 3,
+            row * (this.cellSize + this.padding) + this.details[plyrDet.playerId].rowValue);
                 
         // this.outlineContext.font = "bold 10px Times New Roman";
         // this.outlineContext.fillStyle = "black";
@@ -562,15 +617,15 @@ class GridSystemClient {
 
         const redDoorCoordinates = {
             21: {
-                redDoor1: {x:29, y:1},
-                redDoor2: {x:29, y:19}
+                redDoor1: {x:17, y:1},
+                redDoor2: {x:17, y:19}
             },
             20: {
                 redDoor1: {x:1, y:3},
                 redDoor2: {x:21, y:11}
             },
             18: {
-                redDoor1: {x:24, y:15},
+                redDoor1: {x:22, y:15},
                 redDoor2: {x:1, y:3},
             },
             17: {
@@ -579,6 +634,7 @@ class GridSystemClient {
             }
         }
 
+        
         for (var key in redDoorCoordinates[matrixLength]) {
             this.outlineContext.fillStyle = "red";
             this.outlineContext.fillRect(redDoorCoordinates[matrixLength][key].x * (this.cellSize + this.padding),
@@ -587,16 +643,25 @@ class GridSystemClient {
         }
 
         //CDM here:
-        cdmCoordinates[matrixLength].area.forEach((coordinate) => {
-            this.outlineContext.fillStyle = "goldenrod";
-            this.outlineContext.fillRect(coordinate.x * (this.cellSize + this.padding),
-                coordinate.y * (this.cellSize + this.padding),
-                this.cellSize, this.cellSize);
-            this.outlineContext.fillStyle = "black";
-            this.outlineContext.font = "10px Times New Roman";
-            this.outlineContext.fillText("CDM", coordinate.x * (this.cellSize + this.padding) + 2,
-                coordinate.y * (this.cellSize + this.padding) + 21);
+
+        // cdmCoordinates[matrixLength].area.forEach((coordinate) => {
+        //     this.outlineContext.fillStyle = "goldenrod";
+        //     this.outlineContext.fillRect(coordinate.x * (this.cellSize + this.padding),
+        //         coordinate.y * (this.cellSize + this.padding),
+        //         this.cellSize, this.cellSize);
+        //     this.outlineContext.fillStyle = "black";
+        //     this.outlineContext.font = "10px Times New Roman";
+        //     this.outlineContext.fillText("CDM", coordinate.x * (this.cellSize + this.padding) + 2,
+        //         coordinate.y * (this.cellSize + this.padding) + 21);
+        // });
+        if (matrixLength != 21) {return}
+        this.finishFlags.forEach((flag) => {
+            this.outlineContext.font = "17px Times New Roman";
+            this.outlineContext.fillText("🏁", flag.x * (this.cellSize + this.padding) + 3,
+                flag.y * (this.cellSize + this.padding) + 21);
         });
+        
+
 
 
     }
@@ -683,7 +748,10 @@ sock.on('loadMatrix', (data) => {
 
     var i = 0;
     elementsArr.forEach((element) => {
-        element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/30 || Wllt: " + data.playersArr[i].wallet + "/1000 || Ttl: " + data.playersArr[i].total;
+        // var text = data.playersArr[i].inventory.slice(0,0) + data.playersArr[i].inventory.slice(2,8);
+        // text = data.playersArr[i].inventory.length;
+        element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/60 || Inv: " + data.playersArr[i].inventory;
+        //element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/60 || Wllt: " + data.playersArr[i].wallet + "/1000 || Ttl: " + data.playersArr[i].total;
 
         const playerMatrix = [data.playersArr[i].id, data.playersArr[i].area].join(",");
 
@@ -711,7 +779,8 @@ sock.on('sendMatrix', (data) => {
 
     var i = 0;
     elementsArr.forEach((element) => {
-        element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/30 || Wllt: " + data.playersArr[i].wallet + "/1000 || Ttl: " + data.playersArr[i].total;
+        element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/60 || Inv: " + data.playersArr[i].inventory;
+        //element.innerHTML = data.playersArr[i].id + " Stps: " + data.playersArr[i].steps + "/60 || Wllt: " + data.playersArr[i].wallet + "/1000 || Ttl: " + data.playersArr[i].total;
 
         const playerMatrix = [data.playersArr[i].id, data.playersArr[i].area].join(",");
         
