@@ -137,7 +137,7 @@ class GridSystem {
         this.matrix4 = matrix4;
         this.cellSize = 40;
         this.padding = 2;
-        this.startingSteps = 200;
+        this.startingSteps = 0;
         this.maxSteps = 60;
         this.tempSteps = 0;
         this.winY = 11;
@@ -254,9 +254,13 @@ class GridSystem {
     getTheRightMatrix(player) {
         const entrance = {
             [this.area2Entance]: player.lable,
+            [this.area2e2Entance]: player.lable,
             [this.area3Entance]: player.lable,
+            [this.area3e2Entance]: player.lable,
             [this.mainAreaEntance]: player.lable,
             [this.mainArea2Entance]: player.lable,
+            [this.mainArea3Entance]: player.lable,
+            [this.mainArea4Entance]: player.lable,
             [this.area4Entance]: player.lable
         }
         return entrance;
