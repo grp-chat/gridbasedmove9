@@ -37,25 +37,25 @@ const gridMatrix = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
     [1,0,0,0,1,0,1,1,1,0,0,1,1,1,0,0,0,0,1,0,0,1,1,1,1,1,0,1,1,0,0,0,0,1],
-    [1,0,0,0,1,0,1,21,0,0,0,0,22,0,0,0,1,0,1,0,1,25,0,0,1,0,0,0,1,0,0,0,0,1],
+    [1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],
     [1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,27,1,0,0,0,1,0,1,0,0,1],
-    [1,0,0,0,0,0,1,0,22,1,1,0,1,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,1],
+    [1,0,0,0,0,0,1,0,0,1,1,0,1,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,1],
     [1,0,0,1,1,1,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,28,0,1,0,1,0,0,1],
-    [1,0,0,0,0,0,0,0,1,0,21,0,23,0,0,0,1,0,1,0,0,1,24,0,0,0,0,0,1,0,1,0,0,1],
+    [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,24,0,0,0,0,0,1,0,1,0,0,1],
     [1,0,0,0,1,1,0,1,1,0,1,1,1,0,1,0,1,0,1,26,0,1,1,0,1,1,1,1,1,0,1,0,0,1],
-    [1,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
-    [1,0,0,1,1,1,1,0,1,1,1,24,1,1,0,1,25,0,1,0,1,1,1,1,1,0,1,1,0,0,1,0,0,1],
-    [1,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+    [1,0,0,1,1,1,1,0,1,1,1,0,1,1,0,1,25,0,1,0,1,1,1,1,1,0,1,1,0,0,1,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
     [1,0,0,0,1,1,0,1,1,0,1,1,1,0,1,0,1,0,1,26,0,1,1,0,1,1,1,1,1,0,1,0,0,1],
     [1,0,0,0,0,0,0,0,1,0,21,0,23,0,0,0,1,0,1,0,0,1,24,0,0,0,0,0,1,0,1,0,0,1],
     [1,0,0,1,1,1,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0,1,0,0,1],
     [1,0,0,0,0,0,1,0,22,1,1,0,1,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,1],
     [1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,27,1,0,28,0,1,0,1,0,0,1],
-    [1,0,0,0,1,0,1,21,0,0,0,0,22,0,0,0,1,0,1,0,1,25,0,0,1,0,0,0,1,0,0,0,0,1],
+    [1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,25,0,0,1,0,0,0,1,0,0,0,0,1],
     [1,0,0,0,1,0,1,1,1,0,0,1,1,1,0,0,0,0,1,0,0,1,1,1,1,1,0,1,1,0,0,0,0,1],
     [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-                                
+                                        
     ];
 
 const gridMatrix2 = [
@@ -218,16 +218,16 @@ class GridSystem {
 
         this.p1 = { x: 32, y: 1, lable: 2, id: this.extraArr[0], steps: 1000, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
 
-        this.p2 = { x: 1, y: 19, lable: 3, id: this.extraArr[1], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p3 = { x: 1, y: 18, lable: 4, id: this.extraArr[2], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p4 = { x: 3, y: 1, lable: 5, id: this.extraArr[3], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p5 = { x: 1, y: 1, lable: 6, id: this.extraArr[4], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
+        this.p2 = { x: 13, y: 6, lable: 3, id: this.extraArr[1], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍍" };
+        this.p3 = { x: 17, y: 16, lable: 4, id: this.extraArr[2], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
+        this.p4 = { x: 22, y: 3, lable: 5, id: this.extraArr[3], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍇🍒" };
+        this.p5 = { x: 11, y: 4, lable: 6, id: this.extraArr[4], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
 
-        this.p6 = { x: 3, y: 3, lable: 7, id: this.extraArr[5], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p7 = { x: 3, y: 17, lable: 8, id: this.extraArr[6], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p8 = { x: 3, y: 18, lable: 9, id: this.extraArr[7], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p9 = { x: 3, y: 19, lable: 10, id: this.extraArr[8], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
-        this.p10 = { x: 3, y: 2, lable: 11, id: this.extraArr[9], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
+        this.p6 = { x: 13, y: 7, lable: 7, id: this.extraArr[5], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍎" };
+        this.p7 = { x: 12, y: 9, lable: 8, id: this.extraArr[6], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍓" };
+        this.p8 = { x: 12, y: 17, lable: 9, id: this.extraArr[7], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍍🍇" };
+        this.p9 = { x: 15, y: 19, lable: 10, id: this.extraArr[8], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"" };
+        this.p10 = { x: 5, y: 11, lable: 11, id: this.extraArr[9], steps: this.startingSteps, area: "mainArea", wallet: 0, total: 0, storeSteps: 0, inventory:"🍎" };
 
         this.playersArr = [this.p1, this.p2, this.p3, this.p4, this.p5, this.p6, this.p7, this.p8, this.p9, this.p10];
 
